@@ -5,6 +5,10 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "top-4/5",
+    "top-82"
+  ],
   theme: {
     extend: {
       borderRadius: {
@@ -13,6 +17,10 @@ module.exports = {
       boxShadow: {
         "xl": "0 0 25px -5px",
         "2xl": "0 0 50px -5px"
+      },
+      spacing: {
+        "4/5": "80%",
+        "82": "82%"
       }
     }
   },
