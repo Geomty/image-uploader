@@ -7,11 +7,9 @@ import Footer from "@/app/ui/footer";
 export default function Home() {
   return (
     <main>
-      <div className="w-full h-screen bg-slate-800">
-        <ParticlesBg />
-        <LoginCard />
-        <DownArrow />
-      </div>
+      <ParticlesBg />
+      <LoginCard />
+      <DownArrow />
       <SlateToRose />
       <Footer />
     </main>

@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={ptSans.className}>{children}</body>
+      <body className={`${ptSans.className} bg-slate-800`}>{children}</body>
     </html>
   );
 }
