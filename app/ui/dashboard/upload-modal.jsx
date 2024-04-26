@@ -22,8 +22,11 @@ export default function UploadModal() {
           <input className="h-7 w-56 bg-slate-500 border-b-2 border-slate-200 text-2xl text-slate-200" autoFocus></input>
         </div>
         <div className="flex items-center gap-6">
-          <button className={buttonStyle} onClick={() => setFile(null)} disabled={uploading}>Cancel</button>
-          <UploadButton file={file} setFile={setFile} uploading={uploading} setUploading={setUploading} />
+          <button className={buttonStyle} onClick={() => {
+            setFile(null);
+            fileRef.current.value = "";
+          }} disabled={uploading}>Cancel</button>
+          <UploadButton file={file} setFile={setFile} uploading={uploading} setUploading={setUploading} fileRef={fileRef} />
         </div>
       </div>
 
@@ -35,7 +38,7 @@ export default function UploadModal() {
   )
 }
 
-function UploadButton({ file, setFile, uploading, setUploading }) {
+function UploadButton({ file, setFile, uploading, setUploading, fileRef }) {
   const router = useRouter();
 
   return (
@@ -50,6 +53,7 @@ function UploadButton({ file, setFile, uploading, setUploading }) {
         router.refresh();
         setUploading(false);
         setFile(null);
+        fileRef.current.value = "";
       }, 2000);
     }} className="md:w-auto w-full md:block flex justify-center">
       <button className={buttonStyle} type="submit" disabled={uploading}>{uploading ? "Uploading..." : "Upload"}</button>
