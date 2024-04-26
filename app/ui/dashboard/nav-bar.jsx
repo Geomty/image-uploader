@@ -8,7 +8,7 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-slate-500 h-16 flex flex-row items-center md:justify-normal justify-around">
+    <nav className="bg-slate-500 h-16 flex flex-row items-center select-none md:justify-normal justify-around">
       <a href="/" className={`ml-4 font-bold text-slate-200 text-2xl md:block hidden`}>Image Uploader</a>
       {[["Images", PhotoIcon], ["Passwords", KeyIcon], ["Options", Cog6ToothIcon]].map(i => {
         const path = `/dashboard/${i[0].toLowerCase()}`
