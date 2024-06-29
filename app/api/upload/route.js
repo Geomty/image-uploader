@@ -16,7 +16,7 @@ export async function POST(req) {
         }
       },
       onUploadCompleted: async ({ blob, tokenPayload }) => {
-        console.log("h");
+        //console.log("h");
       }
     });
 

@@ -31,7 +31,7 @@ export default function UploadModal() {
         </div>
       </div>
 
-      <div className="md:m-4 w-[calc(100vw-2rem)] flex md:items-start items-center">
+      <div className="md:m-4 flex md:items-start items-center">
         <label htmlFor="uploadFile" className="pt-1 pb-1 pl-3 pr-3 md:m-0 m-auto bg-rose-300 rounded-full text-3xl text-slate-800 hover:cursor-pointer select-none">Upload</label>
         <input id="uploadFile" type="file" accept="image/*" ref={fileRef} onChange={() => {
           setFile(fileRef.current.files[0]);
