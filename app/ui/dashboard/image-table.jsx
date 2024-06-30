@@ -2,8 +2,10 @@ import CopyButton from "@/app/ui/dashboard/copy-button";
 import DeleteButton from "@/app/ui/dashboard/delete-button";
 import { list } from "@vercel/blob";
 import Info from "@/app/ui/dashboard/info";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function ImageTable() {
+  noStore();
   const buttonStyle = "pt-1 pb-1 pl-3 pr-3 bg-rose-300 rounded-full text-xl text-slate-800";
   const blobList = await list();
   blobList.blobs.sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime());
