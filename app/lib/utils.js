@@ -1,3 +1,12 @@
+import { getIronSession } from "iron-session";
+
+export async function getSession(cookies) {
+  return await getIronSession(cookies, {
+    password: process.env.AUTH_SECRET,
+    cookieName: "auth"
+  });
+}
+
 export const imageTypes = [
   "image/x-xbitmap",
   "image/tiff",

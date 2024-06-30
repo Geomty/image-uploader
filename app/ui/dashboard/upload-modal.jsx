@@ -60,7 +60,7 @@ function UploadButton({ file, setFile, fileName, uploading, setUploading, fileRe
         fileRef.current.value = "";
       }, 2000);
     }} className="md:w-auto w-full md:block flex justify-center">
-      <button className={buttonStyle} type="submit" disabled={true}>{uploading ? "Uploading..." : "Upload"}</button>
+      <button className={buttonStyle} type="submit" disabled={uploading}>{uploading ? "Uploading..." : "Upload"}</button>
     </form>
   )
 }
