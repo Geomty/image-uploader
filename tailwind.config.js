@@ -6,8 +6,7 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   safelist: [
-    "top-4/5",
-    "top-82"
+    
   ],
   theme: {
     extend: {
@@ -19,8 +18,7 @@ module.exports = {
         "2xl": "0 0 50px -5px"
       },
       spacing: {
-        "4/5": "80%",
-        "82": "82%"
+        
       }
     }
   },
