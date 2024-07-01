@@ -9,7 +9,7 @@ const buttonStyle = "pt-1 pb-1 pl-3 pr-3 bg-rose-300 rounded-full text-2xl text-
 export default function UploadModal() {
   const fileRef = useRef(null);
   const [file, setFile] = useState(null);
-  const [fileName, setFileName] = useState(null);
+  const [fileName, setFileName] = useState("");
   const [uploading, setUploading] = useState(false);
 
   return (
@@ -25,7 +25,7 @@ export default function UploadModal() {
         <div className="flex items-center gap-6">
           <button className={buttonStyle} onClick={() => {
             setFile(null);
-            setFileName(null);
+            setFileName("");
             fileRef.current.value = "";
           }} disabled={uploading}>Cancel</button>
           <UploadButton file={file} setFile={setFile} fileName={fileName} setFileName={setFileName} uploading={uploading} setUploading={setUploading} fileRef={fileRef} />
@@ -57,7 +57,7 @@ function UploadButton({ file, setFile, fileName, setFileName, uploading, setUplo
       router.refresh();
       setUploading(false);
       setFile(null);
-      setFileName(null);
+      setFileName("");
       fileRef.current.value = "";
     }} className="md:w-auto w-full md:block flex justify-center">
       <button className={buttonStyle} type="submit" disabled={uploading}>{uploading ? "Uploading..." : "Upload"}</button>
