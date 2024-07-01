@@ -20,14 +20,15 @@ export default function UploadModal() {
       flex flex-col justify-center gap-8 md:items-end items-center bg-slate-500 md:rounded-4xl rounded-2xl`}>
         <div className="flex items-center gap-3">
           <div className="text-2xl text-slate-200 text-center">File name:</div>
-          <input className="h-7 w-56 bg-slate-500 border-b-2 border-slate-200 text-2xl text-slate-200" autoFocus defaultValue={fileName} onChange={event => setFileName(event.target.value)}></input>
+          <input className="h-7 w-56 bg-slate-500 border-b-2 border-slate-200 text-2xl text-slate-200" autoFocus value={fileName} onChange={event => setFileName(event.target.value)}></input>
         </div>
         <div className="flex items-center gap-6">
           <button className={buttonStyle} onClick={() => {
             setFile(null);
+            setFileName(null);
             fileRef.current.value = "";
           }} disabled={uploading}>Cancel</button>
-          <UploadButton file={file} setFile={setFile} fileName={fileName} uploading={uploading} setUploading={setUploading} fileRef={fileRef} />
+          <UploadButton file={file} setFile={setFile} fileName={fileName} setFileName={setFileName} uploading={uploading} setUploading={setUploading} fileRef={fileRef} />
         </div>
       </div>
 
@@ -42,7 +43,7 @@ export default function UploadModal() {
   )
 }
 
-function UploadButton({ file, setFile, fileName, uploading, setUploading, fileRef }) {
+function UploadButton({ file, setFile, fileName, setFileName, uploading, setUploading, fileRef }) {
   const router = useRouter();
 
   return (
@@ -53,12 +54,11 @@ function UploadButton({ file, setFile, fileName, uploading, setUploading, fileRe
         access: "public",
         handleUploadUrl: "/api/upload"
       });
-      setTimeout(() => {
-        router.refresh();
-        setUploading(false);
-        setFile(null);
-        fileRef.current.value = "";
-      }, 2000);
+      router.refresh();
+      setUploading(false);
+      setFile(null);
+      setFileName(null);
+      fileRef.current.value = "";
     }} className="md:w-auto w-full md:block flex justify-center">
       <button className={buttonStyle} type="submit" disabled={uploading}>{uploading ? "Uploading..." : "Upload"}</button>
     </form>
