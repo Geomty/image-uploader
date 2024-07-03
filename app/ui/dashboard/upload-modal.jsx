@@ -22,7 +22,7 @@ export default function UploadModal() {
 
           <motion.div initial={{ opacity: 0, top: "48%" }} animate={{ opacity: 1, top: "50%" }} exit={{ opacity: 0, top: "48%" }} transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
           className="z-20 absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-fit h-fit p-8
-          flex flex-col justify-center gap-8 md:items-end items-center bg-slate-500 md:rounded-4xl rounded-2xl">
+          flex flex-col justify-center gap-8 md:items-end items-center bg-slate-500 rounded-4xl">
             <div className="flex items-center gap-3">
               <div className="text-2xl text-slate-200 text-center">File name:</div>
               <input className="h-7 w-56 bg-slate-500 border-b-2 border-slate-200 text-2xl text-slate-200" autoFocus value={fileName} onChange={event => setFileName(event.target.value)}></input>

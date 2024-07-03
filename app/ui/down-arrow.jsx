@@ -2,6 +2,7 @@
 
 import { ChevronDownIcon } from "@heroicons/react/16/solid";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function DownArrow() {
   const [scroll, setScroll] = useState(false);
@@ -15,5 +16,9 @@ export default function DownArrow() {
     });
   }, [setScroll]);
 
-  return <ChevronDownIcon className={`md:block hidden md:absolute top-[90%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-12 ${scroll ? "opacity-0" : "opacity-50"} fill-slate-200 transition-all duration-500 ease-in-out`} />
+  return (
+    <motion.div animate={{ top: ["87%", "90%"] }} transition={{ type: "tween", duration: 1, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }} className={`md:block hidden md:absolute left-1/2 -translate-x-1/2 -translate-y-1/2 ${scroll ? "opacity-0" : "opacity-50"} transition duration-500 ease-in-out`}>
+      <ChevronDownIcon className="w-12 fill-slate-200" />
+    </motion.div>
+  )
 }
