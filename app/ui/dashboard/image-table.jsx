@@ -4,9 +4,8 @@ import { list } from "@vercel/blob";
 import Info from "@/app/ui/dashboard/info";
 import { unstable_noStore as noStore } from "next/cache";
 
-export default async function ImageTable() {
+export default async function ImageTable({ buttonStyle }) {
   noStore();
-  const buttonStyle = "pt-1 pb-1 pl-3 pr-3 bg-rose-300 rounded-full text-xl text-slate-800";
   const blobList = await list();
   blobList.blobs.sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime());
 
@@ -19,8 +18,8 @@ export default async function ImageTable() {
               <td className="md:w-[30rem] w-full"><img src={b.url} className="md:max-h-96 max-h-56 m-auto" /></td>
               <Info b={b} />
               <td className="flex flex-col md:items-end items-center">
-                <CopyButton buttonStyle={buttonStyle} url={b.url} />
-                <DeleteButton buttonStyle={buttonStyle} url={b.url} />
+                <CopyButton buttonStyle={`${buttonStyle} text-xl`} url={b.url} />
+                <DeleteButton buttonStyle={`${buttonStyle} text-xl`} url={b.url} />
               </td>
             </tr>
           )

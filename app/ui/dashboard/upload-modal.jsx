@@ -5,9 +5,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
-const buttonStyle = "pt-1 pb-1 pl-3 pr-3 bg-rose-300 rounded-full text-2xl text-slate-800";
-
-export default function UploadModal() {
+export default function UploadModal({ buttonStyle }) {
   const fileRef = useRef(null);
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
@@ -28,12 +26,12 @@ export default function UploadModal() {
               <input className="h-7 w-56 bg-slate-500 border-b-2 border-slate-200 text-2xl text-slate-200" autoFocus value={fileName} onChange={event => setFileName(event.target.value)}></input>
             </div>
             <div className="flex items-center gap-6">
-              <button className={buttonStyle} onClick={() => {
+              <button className={`${buttonStyle} text-2xl`} onClick={() => {
                 setFile(null);
                 setFileName("");
                 fileRef.current.value = "";
               }} disabled={uploading}>Cancel</button>
-              <UploadButton file={file} setFile={setFile} fileName={fileName} setFileName={setFileName} uploading={uploading} setUploading={setUploading} fileRef={fileRef} />
+              <UploadButton file={file} setFile={setFile} fileName={fileName} setFileName={setFileName} uploading={uploading} setUploading={setUploading} fileRef={fileRef} buttonStyle={buttonStyle} />
             </div>
           </motion.div>
         </>}
@@ -43,7 +41,7 @@ export default function UploadModal() {
         event.preventDefault();
         setFile(event.dataTransfer.files[0]);
         setFileName(event.dataTransfer.files[0].name)}
-      } htmlFor="uploadFile" className="flex justify-center items-center w-full h-28 bg-rose-300 rounded-3xl text-3xl text-slate-800 hover:cursor-pointer select-none">Upload or drag and drop</label>
+      } htmlFor="uploadFile" className="flex justify-center items-center w-full h-28 bg-slate-300 rounded-3xl text-3xl text-slate-800 hover:cursor-pointer select-none">Upload or drag and drop</label>
       <input id="uploadFile" type="file" accept="image/*" ref={fileRef} onChange={() => {
         setFile(fileRef.current.files[0]);
         setFileName(fileRef.current.files[0].name);
@@ -52,7 +50,7 @@ export default function UploadModal() {
   )
 }
 
-function UploadButton({ file, setFile, fileName, setFileName, uploading, setUploading, fileRef }) {
+function UploadButton({ file, setFile, fileName, setFileName, uploading, setUploading, fileRef, buttonStyle }) {
   const router = useRouter();
 
   return (
@@ -69,7 +67,7 @@ function UploadButton({ file, setFile, fileName, setFileName, uploading, setUplo
       setFileName("");
       fileRef.current.value = "";
     }} className="md:w-auto w-full md:block flex justify-center">
-      <button className={buttonStyle} type="submit" disabled={uploading}>{uploading ? "Uploading..." : "Upload"}</button>
+      <button className={`${buttonStyle} text-2xl`} type="submit" disabled={uploading}>{uploading ? "Uploading..." : "Upload"}</button>
     </form>
   )
 }

@@ -14,7 +14,7 @@ export default function LoginForm() {
         <input className="h-7 bg-slate-200 rounded-md" name="password" type="password" id="password" required autoFocus></input>
         <button className="bg-slate-200 rounded-md"><ArrowRightIcon className="size-7 fill-slate-500" /></button>
       </form>
-      <p className="absolute mt-10 text-xl text-red-600">{error}</p>
+      <p className="absolute mt-10 text-xl text-red-700">{error}</p>
     </div>
   )
 }
