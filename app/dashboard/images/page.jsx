@@ -6,7 +6,7 @@ import { Suspense } from "react";
 export const metadata = { title: "Images" };
 
 export default function Page() {
-  const buttonStyle = "pt-1 pb-1 pl-3 pr-3 bg-orange-300 rounded-full text-slate-800";
+  const buttonStyle = "pt-1 pb-1 pl-3 pr-3 bg-orange-300 hover:bg-orange-400 transition rounded-full text-slate-800";
 
   return (
     <main className="flex flex-col gap-4">

@@ -10,6 +10,7 @@ export default function UploadModal({ buttonStyle }) {
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [dnd, setDnd] = useState(false);
 
   return (
     <>
@@ -37,11 +38,18 @@ export default function UploadModal({ buttonStyle }) {
         </>}
       </AnimatePresence>
 
-      <label onDragOver={event => event.preventDefault()} onDrop={event => {
+      <label onDragOver={event => {
         event.preventDefault();
+        setDnd(true);
+      }} onDragLeave={event => {
+        event.preventDefault();
+        setDnd(false);
+      }} onDrop={event => {
+        event.preventDefault();
+        setDnd(false);
         setFile(event.dataTransfer.files[0]);
-        setFileName(event.dataTransfer.files[0].name)}
-      } htmlFor="uploadFile" className="flex justify-center items-center w-full h-28 bg-slate-300 rounded-3xl text-3xl text-slate-800 hover:cursor-pointer select-none">Upload or drag and drop</label>
+        setFileName(event.dataTransfer.files[0].name);
+      }} htmlFor="uploadFile" className={`flex justify-center items-center w-full h-28 ${dnd ? "bg-slate-400" : "bg-slate-300"} hover:bg-slate-400 transition rounded-3xl text-3xl text-slate-800 hover:cursor-pointer select-none`}>Upload or drag and drop</label>
       <input id="uploadFile" type="file" accept="image/*" ref={fileRef} onChange={() => {
         setFile(fileRef.current.files[0]);
         setFileName(fileRef.current.files[0].name);

@@ -12,7 +12,7 @@ export default function LoginForm() {
       <form className="flex items-center gap-3" action={action}>
         <label className="text-2xl text-slate-200" htmlFor="password">Password:</label>
         <input className="h-7 bg-slate-200 rounded-md" name="password" type="password" id="password" required autoFocus></input>
-        <button className="bg-slate-200 rounded-md"><ArrowRightIcon className="size-7 fill-slate-500" /></button>
+        <button className="bg-slate-200 hover:bg-slate-300 transition rounded-md"><ArrowRightIcon className="size-7 fill-slate-500" /></button>
       </form>
       <p className="absolute mt-10 text-xl text-red-700">{error}</p>
     </div>

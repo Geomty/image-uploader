@@ -25,7 +25,7 @@ export default function NavBar() {
         })}
       </div>
       <form action={signOut}>
-        <button className="pt-1 pb-1 pl-3 pr-3 text-slate-200 text-2xl rounded-full bg-slate-600 hover:cursor-pointer" type="submit">Sign out</button>
+        <button className="pt-1 pb-1 pl-3 pr-3 text-slate-200 text-2xl rounded-full bg-slate-600 hover:cursor-pointer hover:bg-slate-700 transition" type="submit">Sign out</button>
       </form>
     </nav>
   )
