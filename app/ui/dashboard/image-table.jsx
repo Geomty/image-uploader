@@ -11,7 +11,7 @@ export default async function ImageTable() {
   blobList.blobs.sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime());
 
   return (
-    <table className="bg-slate-500 rounded-3xl md:mt-8 mt-4 border-separate w-full">
+    <table className="bg-slate-500 rounded-3xl border-separate w-full">
       <tbody>
         {blobList.blobs.map(b => {
           return (

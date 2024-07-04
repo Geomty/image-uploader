@@ -1,6 +1,6 @@
 export function TableSkeleton() {
   return (
-    <div className="bg-slate-500 rounded-3xl mt-8 w-full">
+    <div className="bg-slate-500 rounded-3xl w-full">
       <ImageSkeleton />
       <div className="ml-8 mr-8 w-auto h-1 bg-slate-600"></div>
       <ImageSkeleton />

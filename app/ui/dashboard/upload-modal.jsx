@@ -39,13 +39,15 @@ export default function UploadModal() {
         </>}
       </AnimatePresence>
 
-      <div onDragOver={event => event.preventDefault()} onDrop={event => {event.preventDefault(); console.log(event)}} className="md:m-4 flex md:items-start items-center">
-        <label htmlFor="uploadFile" className="pt-1 pb-1 pl-3 pr-3 md:m-0 m-auto bg-rose-300 rounded-full text-3xl text-slate-800 hover:cursor-pointer select-none">Upload</label>
-        <input id="uploadFile" type="file" accept="image/*" ref={fileRef} onChange={() => {
-          setFile(fileRef.current.files[0]);
-          setFileName(fileRef.current.files[0].name);
-        }} className="hidden" />
-      </div>
+      <label onDragOver={event => event.preventDefault()} onDrop={event => {
+        event.preventDefault();
+        setFile(event.dataTransfer.files[0]);
+        setFileName(event.dataTransfer.files[0].name)}
+      } htmlFor="uploadFile" className="flex justify-center items-center w-full h-28 bg-rose-300 rounded-3xl text-3xl text-slate-800 hover:cursor-pointer select-none">Upload or drag and drop</label>
+      <input id="uploadFile" type="file" accept="image/*" ref={fileRef} onChange={() => {
+        setFile(fileRef.current.files[0]);
+        setFileName(fileRef.current.files[0].name);
+      }} className="hidden" />
     </>
   )
 }

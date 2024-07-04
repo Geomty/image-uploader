@@ -7,10 +7,10 @@ export const metadata = { title: "Images" };
 
 export default function Page() {
   return (
-    <main>
+    <main className="flex flex-col gap-4">
       <UploadModal />
       <Suspense fallback={<TableSkeleton />}>
-        <p className="absolute -z-10 text-2xl text-slate-200 ml-4 mt-4">No images...</p>
+        <p className="absolute -z-10 text-2xl text-slate-200 ml-4 mt-36">No images...</p>
         <ImageTable />
       </Suspense>
     </main>
