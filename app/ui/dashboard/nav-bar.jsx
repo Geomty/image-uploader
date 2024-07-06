@@ -11,7 +11,7 @@ export default function NavBar() {
   return (
     <nav className="bg-slate-500 h-16 pl-4 pr-4 flex items-center select-none md:justify-between justify-around">
       <div className="flex items-center gap-14 md:justify-normal justify-around">
-        <a href="/" className={`font-bold text-slate-200 text-2xl md:block hidden`}>Image Uploader</a>
+        <p className={`font-bold text-slate-200 text-2xl md:block hidden`}>Image Uploader</p>
         {[["Images", PhotoIcon], ["Passwords", KeyIcon], ["Options", Cog6ToothIcon]].map(i => {
           const path = `/dashboard/${i[0].toLowerCase()}`
           const Icon = i[1];
