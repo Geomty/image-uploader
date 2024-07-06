@@ -21,12 +21,16 @@ export default function UploadModal({ buttonStyle }) {
 
           <motion.div initial={{ opacity: 0, top: "48%" }} animate={{ opacity: 1, top: "50%" }} exit={{ opacity: 0, top: "48%" }} transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
           className="z-20 absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-fit h-fit p-8
-          flex flex-col justify-center gap-8 md:items-end items-center bg-slate-500 rounded-4xl">
-            <div className="flex items-center gap-3">
+          flex flex-col gap-8 items-center bg-slate-500 rounded-4xl">
+            <div className="w-full flex items-center gap-3">
               <div className="text-2xl text-slate-200 text-center">File name:</div>
-              <input className="h-7 w-56 bg-slate-500 border-b-2 border-slate-200 text-2xl text-slate-200" autoFocus value={fileName} onChange={event => setFileName(event.target.value)}></input>
+              <input className="h-7 flex-grow bg-slate-500 border-b-2 border-slate-200 text-2xl text-slate-200" autoFocus value={fileName} onChange={event => setFileName(event.target.value)}></input>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex flex-col items-center gap-1">
+              <div className="text-2xl text-slate-200">Preview:</div>
+              <img className="max-h-96" src={URL.createObjectURL(file)} />
+            </div>
+            <div className="w-full flex justify-end items-center gap-6">
               <button className={`${buttonStyle} text-2xl`} onClick={() => {
                 setFile(null);
                 setFileName("");
@@ -74,7 +78,7 @@ function UploadButton({ file, setFile, fileName, setFileName, uploading, setUplo
       setFile(null);
       setFileName("");
       fileRef.current.value = "";
-    }} className="md:w-auto w-full md:block flex justify-center">
+    }}>
       <button className={`${buttonStyle} text-2xl`} type="submit" disabled={uploading}>{uploading ? "Uploading..." : "Upload"}</button>
     </form>
   )
