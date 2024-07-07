@@ -12,9 +12,14 @@ export async function deleteImage(formData) {
 }
 
 export async function signIn(_, formData) {
-  if (formData.get("password") == process.env.PASSWORD) {
+  if (formData.get("password") == process.env.WRITE_PASSWORD || formData.get("password") == process.env.READ_PASSWORD) {
     const session = await getSession(cookies());
     session.signedIn = true;
+    if (formData.get("password") == process.env.WRITE_PASSWORD) {
+      session.write = true;
+    } else {
+      session.write = false;
+    }
     await session.save();
     redirect("/dashboard");
   } else {

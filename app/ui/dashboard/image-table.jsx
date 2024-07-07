@@ -1,10 +1,9 @@
-import CopyButton from "@/app/ui/dashboard/copy-button";
-import DeleteButton from "@/app/ui/dashboard/delete-button";
+import { CopyButton, DeleteButton } from "@/app/ui/dashboard/buttons";
 import { list } from "@vercel/blob";
 import Info from "@/app/ui/dashboard/info";
 import { unstable_noStore as noStore } from "next/cache";
 
-export default async function ImageTable({ buttonStyle }) {
+export default async function ImageTable({ session }) {
   noStore();
   const blobList = await list();
   blobList.blobs.sort((a, b) => b.uploadedAt.getTime() - a.uploadedAt.getTime());
@@ -18,8 +17,8 @@ export default async function ImageTable({ buttonStyle }) {
               <td className="md:w-[30rem] w-full"><img src={b.url} className="md:max-h-96 max-h-56 m-auto" /></td>
               <Info b={b} />
               <td className="flex flex-col md:items-end items-center">
-                <CopyButton buttonStyle={`${buttonStyle} text-xl`} url={b.url} />
-                <DeleteButton buttonStyle={`${buttonStyle} text-xl`} url={b.url} />
+                <CopyButton url={b.url} />
+                <DeleteButton session={session} url={b.url} />
               </td>
             </tr>
           )

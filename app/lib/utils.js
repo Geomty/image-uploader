@@ -23,6 +23,8 @@ export const imageTypes = [
   "image/avif-sequence"
 ];
 
+export const buttonStyle = "pt-1 pb-1 pl-3 pr-3 bg-orange-300 hover:bg-orange-400 transition rounded-full text-slate-800";
+
 export function parseDate(date) {
   const month = date.getMonth() + 1;
   const day = date.getDate();

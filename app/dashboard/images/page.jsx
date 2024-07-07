@@ -1,19 +1,21 @@
-import UploadModal from "@/app/ui/dashboard/upload-modal";
+import UploadModal from "@/app/ui/dashboard/modals/upload-modal";
 import ImageTable from "@/app/ui/dashboard/image-table";
 import { TableSkeleton } from "@/app/ui/dashboard/skeletons";
 import { Suspense } from "react";
+import { getSession } from "@/app/lib/utils";
+import { cookies } from "next/headers";
 
 export const metadata = { title: "Images" };
 
-export default function Page() {
-  const buttonStyle = "pt-1 pb-1 pl-3 pr-3 bg-orange-300 hover:bg-orange-400 transition rounded-full text-slate-800";
+export default async function Page() {
+  const session = await getSession(cookies());
 
   return (
     <main className="flex flex-col gap-4">
-      <UploadModal buttonStyle={buttonStyle} />
+      <UploadModal session={{...session}} />
       <Suspense fallback={<TableSkeleton />}>
         <p className="absolute -z-10 text-2xl text-slate-200 ml-4 mt-36">No images...</p>
-        <ImageTable buttonStyle={buttonStyle} />
+        <ImageTable session={{...session}} />
       </Suspense>
     </main>
   )
