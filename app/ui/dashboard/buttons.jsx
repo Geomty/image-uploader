@@ -20,6 +20,10 @@ export function CopyButton({ url }) {
   )
 }
 
+export function EditButton() {
+  return <button className={`${buttonStyle} text-xl`}>Edit</button>
+}
+
 export function DeleteButton({ session, url }) {
   const [deleting, setDeleting] = useState(false);
   const [blocked, setBlocked] = useState(false);
@@ -42,7 +46,7 @@ export function DeleteButton({ session, url }) {
             }
           }}
           disabled={deleting}
-          className={`${buttonStyle} text-xl md:mt-4 mt-2`}
+          className={`${buttonStyle} text-xl`}
         >{deleting ? "Deleting..." : "Delete"}</button>
       </form>
     </>
