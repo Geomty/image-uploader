@@ -6,14 +6,6 @@ import { redirect } from "next/navigation";
 import { getSession } from "@/app/lib/utils";
 import { cookies } from "next/headers";
 
-export async function editImage(_, formData) {
-  const data = formData.get("data").split("|");
-  await copy(data[0], data[1], { access: "public", addRandomSuffix: true });
-  await del(data[0]);
-  return true;
-  revalidatePath("/dashboard/images");
-}
-
 export async function deleteImage(formData) {
   await del(formData.get("url"));
   revalidatePath("/dashboard/images");

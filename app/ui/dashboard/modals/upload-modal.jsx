@@ -3,15 +3,13 @@
 import { upload } from "@vercel/blob/client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { useFormState } from "react-dom";
 import BaseModal from "@/app/ui/dashboard/modals/base-modal";
 import { buttonStyle } from "@/app/lib/utils";
-import { editImage } from "@/app/lib/actions";
+import { deleteImage } from "@/app/lib/actions";
 
 export default function UploadModal({ file, setFile, fileRef = null, editing }) {
   const [fileName, setFileName] = useState(file.name);
   const [uploading, setUploading] = useState(false);
-  const [complete, action] = useFormState(editImage, false);
   const router = useRouter();
 
   return (
@@ -30,38 +28,25 @@ export default function UploadModal({ file, setFile, fileRef = null, editing }) 
           if (fileRef) fileRef.current.value = "";
         }} disabled={uploading}>Cancel</button>
 
-        <form action={editing ? action : ""} onSubmit={async event => {
-          if (editing) {
-            //event.preventDefault();
-            setUploading(true);
-            const proxy = new Proxy({ variable: complete }, { set: (target, property, value) => {
-              console.log(target);
-              console.log(property);
-              console.log(value);
-              setUploading(false);
-              setFile(false);
-            } });
-          } else {
-            event.preventDefault();
-            setUploading(true);
-            await upload(fileName, file, {
-              access: "public",
-              handleUploadUrl: "/api/upload"
-            });
-            router.refresh();
-            setUploading(false);
-            setFile(null);
-            if (fileRef) fileRef.current.value = "";
-          }
+        <form action={deleteImage} onSubmit={async event => {
+          if (!editing) event.preventDefault();
+          setUploading(true);
+          await upload(fileName, file, {
+            access: "public",
+            handleUploadUrl: "/api/upload"
+          });
+          if (!editing) router.refresh();
+          setUploading(false);
+          setFile(null);
+          if (fileRef) fileRef.current.value = "";
         }}>
           <button
-            name="data"
-            value={`${editing}|${fileName}`}
+            name="url"
+            value={editing}
             type="submit"
             disabled={uploading}
             className={`${buttonStyle} text-2xl`}
           >{editing ? (uploading ? "Editing..." : "Edit") : (uploading ? "Uploading..." : "Upload")}</button>
-          {/* <p>{complete.toString()}</p> */}
         </form>
       </div>
     </>} />
