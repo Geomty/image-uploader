@@ -18,7 +18,7 @@ export default async function ImageTable({ session }) {
               <Info b={b} />
               <td className="flex flex-col gap-2 md:items-end items-center">
                 <CopyButton url={b.url} />
-                <EditButton />
+                <EditButton session={session} f={b} />
                 <DeleteButton session={session} url={b.url} />
               </td>
             </tr>
