@@ -14,11 +14,11 @@ export default function UploadModal({ file, setFile, fileRef = null, editing }) 
 
   return (
     <BaseModal h={<>
-      <div className="w-full flex items-center gap-3">
+      <div className="w-full flex md:flex-row flex-col items-center gap-3">
         <div className="text-2xl text-slate-200 text-center">File name:</div>
         <input className="h-7 flex-grow bg-slate-500 border-b-2 border-slate-200 text-2xl text-slate-200" autoFocus value={fileName} onChange={event => setFileName(event.target.value)}></input>
       </div>
-      <div className="flex flex-col items-center gap-1">
+      <div className="md:flex hidden flex-col items-center gap-1">
         <div className="text-2xl text-slate-200">Preview:</div>
         <img className="max-h-96" src={URL.createObjectURL(file)} />
       </div>

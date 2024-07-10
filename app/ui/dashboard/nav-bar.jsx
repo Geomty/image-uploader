@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { PhotoIcon, KeyIcon, Cog6ToothIcon } from "@heroicons/react/16/solid";
+import { PhotoIcon, KeyIcon, Cog6ToothIcon, ArrowRightStartOnRectangleIcon } from "@heroicons/react/16/solid";
 import { signOut } from "@/app/lib/actions";
 
 export default function NavBar() {
@@ -25,7 +25,8 @@ export default function NavBar() {
         })}
       </div>
       <form action={signOut}>
-        <button className="pt-1 pb-1 pl-3 pr-3 text-slate-200 text-2xl rounded-full bg-slate-600 hover:cursor-pointer hover:bg-slate-700 transition" type="submit">Sign out</button>
+        <button className="md:block hidden pt-1 pb-1 pl-3 pr-3 text-slate-200 text-2xl rounded-full bg-slate-600 hover:cursor-pointer hover:bg-slate-700 transition" type="submit">Sign out</button>
+        <button className="md:hidden block p-2 rounded-full bg-slate-600 hover:cursor-pointer hover:bg-slate-700 transition" type="submit"><ArrowRightStartOnRectangleIcon className="fill-slate-200 w-8" /></button>
       </form>
     </nav>
   )
