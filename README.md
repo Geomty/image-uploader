@@ -6,4 +6,5 @@ My revamped image uploader, made with Next.js and Tailwind
 - Custom file names
 - Drag and drop support
 - Multiple passwords with different file permissions
+- Error handling
 - Responsive

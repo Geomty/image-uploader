@@ -3,8 +3,9 @@
 import { useRef, useState } from "react";
 import { deleteImage } from "@/app/lib/actions";
 import { AnimatePresence } from "framer-motion";
-import UploadModal from "./modals/upload-modal";
+import UploadModal from "@/app/ui/dashboard/modals/upload-modal";
 import BlockedModal from "@/app/ui/dashboard/modals/blocked-modal";
+import ErrorModal from "@/app/ui/dashboard/modals/error-modal";
 import { buttonStyle } from "@/app/lib/utils";
 
 export function UploadButton({ session }) {
@@ -12,13 +13,16 @@ export function UploadButton({ session }) {
   const [file, setFile] = useState(null);
   const [dnd, setDnd] = useState(false);
   const [blocked, setBlocked] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
     <>
       <AnimatePresence>
         {blocked && <BlockedModal setBlocked={setBlocked} />}
-
-        {file && <UploadModal file={file} setFile={setFile} fileRef={fileRef} />}
+        {file && <UploadModal file={file} setFile={setFile} fileRef={fileRef} setError={setError} />}
+      </AnimatePresence>
+      <AnimatePresence>
+        {error && <ErrorModal setError={setError} setThing={setFile} />}
       </AnimatePresence>
 
       <label onDragOver={event => {
@@ -69,13 +73,16 @@ export function CopyButton({ url }) {
 export function EditButton({ session, f }) {
   const [file, setFile] = useState(null);
   const [blocked, setBlocked] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
     <>
       <AnimatePresence>
         {blocked && <BlockedModal setBlocked={setBlocked} />}
-
-        {file && <UploadModal file={file} setFile={setFile} editing={f.url} />}
+        {file && <UploadModal file={file} setFile={setFile} setError={setError} />}
+      </AnimatePresence>
+      <AnimatePresence>
+        {error && <ErrorModal setError={setError} setThing={setFile} />}
       </AnimatePresence>
 
       <button

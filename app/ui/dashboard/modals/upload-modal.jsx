@@ -7,7 +7,7 @@ import BaseModal from "@/app/ui/dashboard/modals/base-modal";
 import { buttonStyle } from "@/app/lib/utils";
 import { deleteImage } from "@/app/lib/actions";
 
-export default function UploadModal({ file, setFile, fileRef = null, editing }) {
+export default function UploadModal({ file, setFile, fileRef = null, editing, setError }) {
   const [fileName, setFileName] = useState(file.name);
   const [uploading, setUploading] = useState(false);
   const router = useRouter();
@@ -31,14 +31,20 @@ export default function UploadModal({ file, setFile, fileRef = null, editing }) 
         <form action={deleteImage} onSubmit={async event => {
           if (!editing) event.preventDefault();
           setUploading(true);
-          await upload(fileName, file, {
-            access: "public",
-            handleUploadUrl: "/api/upload"
-          });
-          if (!editing) router.refresh();
-          setUploading(false);
-          setFile(null);
-          if (fileRef) fileRef.current.value = "";
+          try {
+            await upload(fileName, file, {
+              access: "public",
+              handleUploadUrl: "/api/upload"
+            });
+            if (!editing) router.refresh();
+            setUploading(false);
+            setFile(null);
+            if (fileRef) fileRef.current.value = "";
+          } catch (error) {
+            setUploading(false);
+            if (fileRef) fileRef.current.value = "";
+            setError(true);
+          }
         }}>
           <button
             name="url"
