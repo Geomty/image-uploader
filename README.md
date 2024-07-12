@@ -1,5 +1,9 @@
 # image uploader
 
-My revamped image uploader, made with next.js and tailwind
+My revamped image uploader, made with Next.js and Tailwind
 
-###### work in progress
+### Features:
+- Custom file names
+- Drag and drop support
+- Multiple passwords with different file permissions
+- Responsive

@@ -1,7 +1,7 @@
-import { PT_Sans } from "next/font/google";
+import { Lato } from "next/font/google";
 import "@/app/ui/global.css";
 
-const ptSans = PT_Sans({ subsets: ["latin"], weight: ["400", "700"] });
+const lato = Lato({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
   title: {
@@ -16,7 +16,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${ptSans.className} bg-slate-800`}>{children}</body>
+      <body className={`${lato.className} bg-slate-800`}>{children}</body>
     </html>
   );
 }
