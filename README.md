@@ -8,3 +8,5 @@ My revamped image uploader, made with Next.js and Tailwind
 - Multiple passwords with different file permissions
 - Error handling
 - Responsive
+
+###### Read-only password: password
