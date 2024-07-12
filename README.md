@@ -1,4 +1,4 @@
-# image uploader
+# Image Uploader
 
 My revamped image uploader, made with Next.js and Tailwind
 
