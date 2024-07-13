@@ -1,6 +1,6 @@
 # Image Uploader
 
-My revamped image uploader, made with Next.js and Tailwind
+My revamped image uploader, made with Next.js and Tailwind.
 
 ### Features:
 - Custom file names
