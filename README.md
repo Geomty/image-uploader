@@ -7,6 +7,6 @@ My revamped image uploader, made with Next.js and Tailwind.
 - Drag and drop support
 - Multiple passwords with different file permissions
 - Error handling
-- Responsive
+- Responsive design
 
 ###### Read-only password: password
