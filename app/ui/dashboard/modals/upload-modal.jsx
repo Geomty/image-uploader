@@ -7,7 +7,7 @@ import BaseModal from "@/app/ui/dashboard/modals/base-modal";
 import { buttonStyle } from "@/app/lib/utils";
 import { deleteImage } from "@/app/lib/actions";
 
-export default function UploadModal({ file, setFile, fileRef = null, editing, setError }) {
+export default function UploadModal({ file, setFile, fileRef = null, setError, editing, url }) {
   const [fileName, setFileName] = useState(file.name);
   const [uploading, setUploading] = useState(false);
   const router = useRouter();
@@ -36,7 +36,7 @@ export default function UploadModal({ file, setFile, fileRef = null, editing, se
               access: "public",
               handleUploadUrl: "/api/upload"
             });
-            if (!editing) router.refresh();
+            router.refresh();
             setUploading(false);
             setFile(null);
             if (fileRef) fileRef.current.value = "";
@@ -48,7 +48,7 @@ export default function UploadModal({ file, setFile, fileRef = null, editing, se
         }}>
           <button
             name="url"
-            value={editing}
+            value={url}
             type="submit"
             disabled={uploading}
             className={`${buttonStyle} text-2xl`}

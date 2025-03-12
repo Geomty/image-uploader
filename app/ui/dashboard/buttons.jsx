@@ -79,7 +79,7 @@ export function EditButton({ session, f }) {
     <>
       <AnimatePresence>
         {blocked && <BlockedModal setBlocked={setBlocked} />}
-        {file && <UploadModal file={file} setFile={setFile} setError={setError} />}
+        {file && <UploadModal file={file} setFile={setFile} setError={setError} editing={true} url={f.url} />}
       </AnimatePresence>
       <AnimatePresence>
         {error && <ErrorModal setError={setError} setThing={setFile} />}

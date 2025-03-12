@@ -1,6 +1,6 @@
 "use server";
 
-import { copy, del } from "@vercel/blob";
+import { del } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getSession } from "@/app/lib/utils";
@@ -21,7 +21,7 @@ export async function signIn(_, formData) {
       session.write = false;
     }
     await session.save();
-    redirect("/dashboard");
+    redirect("/dashboard/images");
   } else {
     return "Incorrect password!";
   }
